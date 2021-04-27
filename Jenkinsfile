@@ -9,7 +9,9 @@ pipeline {
                 sh 'mvn compile -f pom.xml'
             } 
         }
-
+        stage ('Single Tests'){
+             sh 'mvn -Dtest=AppTest test'
+        }
         stage('Test') {
             steps {
                 sh 'mvn test -f pom.xml'
