@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.uregina.app.Time24Test
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.093 s <<< FAILURE! - in com.uregina.app.Time24Test
+CorrectTime_true(com.uregina.app.Time24Test)  Time elapsed: 0.014 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.uregina.app.Time24Test.CorrectTime_true(Time24Test.java:25)
+
+CorrectTimeTo_24hr(com.uregina.app.Time24Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.uregina.app.Time24Test.CorrectTimeTo_24hr(Time24Test.java:35)
+

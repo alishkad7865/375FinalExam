@@ -18,6 +18,8 @@ public class App
 	 */
     public static void main( String[] args )
     {
+		//
+		Time24.toTime24(07, 59,AmPm.am);
 		ArrayList<Flight> ticket= new ArrayList<Flight>();
 		Scanner scan = new Scanner(System.in);
         System.out.println( "1. Creating a ticket" );

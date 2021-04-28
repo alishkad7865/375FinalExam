@@ -1,5 +1,7 @@
 package com.uregina.app;
 
+import javax.lang.model.util.ElementScanner6;
+
 import com.uregina.exceptions.*;
 
 /**
@@ -123,7 +125,15 @@ public class Date
 	public static boolean lessThan(Date d1,Date d2)
 	{
 		//Todo: Add your code here
-		
+		if(d1.getYear() < d2.getYear()){
+			return true;
+		}
+		else if(d1.getYear() <= d2.getYear() && d1.getMonth()< d2.getMonth()){
+			return true;
+		}
+		else if(d1.getYear() <= d2.getYear() && d1.getMonth()<= d2.getMonth() && d1.getDay() < d2.getDay()){
+			return true;
+		}
 		return false;
 	}
 }

@@ -38,8 +38,33 @@ public class Ticket
 	public static boolean checkTicket( ArrayList<Flight> ticket, int maxFlightsCount, int maxFlightTime, int maxLayoverTime, boolean hasSchengenVisa)
 	{
 		//Todo: add your code here
+		int flightTime= 0;
+		int layTime= 0;
+		for(int i=0; i<ticket.size(); i++){
+			String a= ticket.get(i).getArrivalAirport();
+			String d= ticket.get(i).getDepatureAirport();
+			if(!(a.toUpperCase().matches(a) ||d.toUpperCase().matches(d)) || (ticket.size() > maxFlightsCount)){
+				return false;
+			}
+			try {
+				flightTime += ticket.get(i).calculateFlightTime();
+				layTime+=Flight.calculateLayoverTime(ticket.get(i),ticket.get(i+1));
+				for (int j=0 ; j<SchengenAirportsCode.length;j++){
+					if(SchengenAirportsCode[i].equals(ticket.get(i).getArrivalAirport()) && !hasSchengenVisa){
+						return false;
+					}
+				}
+				if(ticket.get(i+1)!=null && !a.equals(ticket.get(i+1).getDepatureAirport())){
+					return false;
+				}	
+			} catch (Exception e) {
+				//TODO: handle exception
+			}
+		}
 		
-
+		if(flightTime>maxFlightTime || layTime>maxLayoverTime || !hasCyclicTrip(ticket)){
+			return false;
+		}
 		//end of your code
 		return true;
 	}
@@ -55,8 +80,9 @@ public class Ticket
 	public static boolean hasCyclicTrip(ArrayList<Flight> ticket)
 	{
 		//Todo : add your code here
-		
-
+		if(ticket.get(0).getDepatureAirport().equals(ticket.get(ticket.size()).getArrivalAirport())){
+			return true;
+		}
 		//Todo : end of your code
 		return false;
 	}
